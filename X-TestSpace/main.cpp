@@ -42,7 +42,24 @@ int main()
 	f.x = 7;
 	f.y = 4;
 
+	vec2 mag = { 3, 4 };
+	vec2 bag = { 1, 1 };
+
 	std::cout << Distance(g, f) << std::endl;
+	assert(magnitude(mag) == 5);
+	//std::cout << normalize(mag).x << std::endl;
+	assert(normalize(mag).x == 0.6f);
+	assert(Dot(mag, bag) == 7.0f);
+	//2, 3, 4, 9, 13
+	assert(Distance(mag, bag) == sqrtf(13));
+	assert(Perpendicular(mag).x == -4.0f);
+	//std::cout << Lerp(bag, mag, 1).x << std::endl;
+	assert(Lerp(bag, mag, 1).x == 2.0f);
+	assert(min(mag, bag).x = 1.0f);
+	assert(max(mag, bag).x = 3);
+
+
+
 
 	while (true) {}
 

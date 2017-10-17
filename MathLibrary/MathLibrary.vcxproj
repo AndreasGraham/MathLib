@@ -112,11 +112,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="mathutills.h" />
+    <ClInclude Include="matrices.h" />
     <ClInclude Include="Vec2.h" />
+    <ClInclude Include="vec3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mathutills.cpp" />
+    <ClCompile Include="matrices.cpp" />
     <ClCompile Include="vec2.cpp" />
+    <ClCompile Include="vec3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
