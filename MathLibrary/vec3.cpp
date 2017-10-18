@@ -17,9 +17,9 @@ vec3 &operator+=(vec3 &lhs, const vec3 &rhs) {
 }
 
 bool operator==(const vec3 &lhs, const vec3 &rhs) {
-	if (abs(lhs.x - rhs.x) < FLT_EPSILON &&
-		abs(lhs.y - rhs.y) < FLT_EPSILON &&
-		abs(lhs.z - rhs.z < FLT_EPSILON))
+	if (abs(lhs.x - rhs.x) < EPSILON &&
+		abs(lhs.y - rhs.y) < EPSILON &&
+		abs(lhs.z - rhs.z < EPSILON))
 	{
 		return true;
 	}
@@ -27,13 +27,45 @@ bool operator==(const vec3 &lhs, const vec3 &rhs) {
 	return false;
 }
 
-vec3 operator*(const vec3 &lhs, const vec3 &rhs) {
+vec3 operator-(const vec3 & lhs, const vec3 & rhs)
+{
 	vec3 result;
-	result.x = lhs.x * rhs.x;
-	result.y = lhs.y * rhs.x;
-	result.z = lhs.z * rhs.z;
+	result.x = lhs.x - rhs.x;
+	result.y = lhs.y - rhs.y;
+	result.z = lhs.z - rhs.z;
 
 	return result;
+}
+
+vec3 operator*(const vec3 &lhs, const float rhs) {
+	vec3 result;
+	result.x = lhs.x * rhs;
+	result.y = lhs.y * rhs;
+	result.z = lhs.z * rhs;
+
+	return result;
+}
+
+vec3 operator*(const float lhs, const vec3 & rhs)
+{
+	vec3 result;
+	result.x = lhs * rhs.x;
+	result.y = lhs * rhs.y;
+	result.z = lhs * rhs.z;
+
+	return result;
+}
+
+bool operator!=(const vec3 & lhs, const vec3 & rhs)
+{
+	if (abs(lhs.x - rhs.x) < FLT_EPSILON &&
+		abs(lhs.y - rhs.y) < FLT_EPSILON &&
+		abs(lhs.z - rhs.z < FLT_EPSILON))
+	{
+		return false;
+	}
+
+	return true;
 }
 
 vec3 operator/(const vec3 &lhs, const vec3 &rhs) {
@@ -56,22 +88,22 @@ vec3 &operator-=(vec3 &lhs, const vec3 &rhs) {
 	return lhs;
 }
 
-vec3 operator*=(const vec3 &lhs, const vec3 &rhs) {
-	vec3 result;
-	result.x = lhs.x * rhs.x;
-	result.y = lhs.y * rhs.x;
-	result.z = lhs.z * rhs.z;
+vec3 &operator*=(vec3 &lhs, const float rhs) {
+	//vec3 result;
+	lhs.x = lhs.x * rhs;
+	lhs.y = lhs.y * rhs;
+	lhs.z = lhs.z * rhs;
 
-	return result;
+	return lhs;
 }
 
-vec3 operator /=(const vec3 &lhs, const vec3 &rhs) {
-	vec3 result;
-	result.x = lhs.x / rhs.x;
-	result.y = lhs.y / rhs.x;
-	result.z = lhs.z / rhs.z;
+vec3 &operator /=( vec3 &lhs, const float rhs) {
+	//vec3 result;
+	lhs.x = lhs.x / rhs;
+	lhs.y = lhs.y / rhs;
+	lhs.z = lhs.z / rhs;
 
-	return result;
+	return lhs;
 }
 
 
@@ -205,4 +237,14 @@ vec3 max(vec3 a, vec3 b) {
 		result.z = b.z;
 	}
 	return result;
+}
+
+vec3 cross(const vec3 &a, const vec3 &b) {
+	return vec3 {a.y*b.z - a.z*b.y,
+		a.z*b.x - a.x*b.z,
+		a.x*b.y - a.y*b.x};
+}
+
+float dot(vec3 lhs, vec3 rhs) {
+	return (lhs.x * rhs.x) + (lhs.y * rhs.y) + (lhs.z * rhs.z);
 }
