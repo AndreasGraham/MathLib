@@ -1,7 +1,7 @@
 #include "sfwdraw.h"
 #include "Player.h"
 #include "transform.h"
-
+#include "Triangle.h"
 
 
 int main() {
@@ -11,7 +11,7 @@ int main() {
 	myTransform.position = vec2{ 200,400 };
 	myTransform.dimension = vec2{ 2,2 };
 	myTransform.angle = 45;
-
+	Triangle Nei(vec2{ 400,300 }, vec2{1,1}, 0);
 	Transform myBaby;
 	myBaby.position = vec2{ 50,50 };
 	myBaby.dimension = vec2{ 1,1 };
@@ -23,9 +23,10 @@ int main() {
 	{
 		
 		// 
-		
+		Nei.draw();
+		Nei.update();
 
-
+		DrawMatrix(Nei.myT.getGlobalTransform(), 40);
 
 		DrawMatrix(myTransform.getLocalTransofrm(), 40);
 		DrawMatrix(myBaby.getGlobalTransform(), 30);
