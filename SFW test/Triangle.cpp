@@ -8,7 +8,7 @@ Triangle::Triangle()
 {
 }
 
-Triangle::Triangle(vec2 pos, vec2 scale, float angle, char upK, char downK, char leftK, char rightK, char shotK)
+Triangle::Triangle(vec2 pos, vec2 scale, float angle, char upK, char downK, char leftK, char rightK, char shotK, int c)
 {
 	myT.position = pos;
 	myT.dimension = scale;
@@ -19,6 +19,7 @@ Triangle::Triangle(vec2 pos, vec2 scale, float angle, char upK, char downK, char
 	left = leftK;
 	right = rightK;
 	shoot = shotK;
+	color = c;
 
 
 	for (int i = 0; i < ammo; i++)
@@ -29,9 +30,18 @@ Triangle::Triangle(vec2 pos, vec2 scale, float angle, char upK, char downK, char
 
 
 void Triangle::drawTriangle(float ax, float ay, float bx, float by, float cx, float cy) {
-	sfw::drawLine(ax, ay, bx, by, RED);
-	sfw::drawLine(ax, ay, cx, cy, RED);
-	sfw::drawLine(cx, cy, bx, by, RED);
+	if (color == 0) {
+		sfw::drawLine(ax, ay, bx, by, RED);
+		sfw::drawLine(ax, ay, cx, cy, RED);
+		sfw::drawLine(cx, cy, bx, by, RED);
+	}
+
+	else if (color == 1) {
+		sfw::drawLine(ax, ay, bx, by, GREEN);
+		sfw::drawLine(ax, ay, cx, cy, GREEN);
+		sfw::drawLine(cx, cy, bx, by, GREEN);
+	}
+	
 }
 
 void Triangle::draw()

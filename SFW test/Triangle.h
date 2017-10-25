@@ -4,19 +4,20 @@
 
 class Triangle : public Heroes {
 public:
-	int ammo = 25;
+	float ammo = 25;
 	Bullet magazine[25];
-	int health = 50;
+	float health = 50.0f;
 
 	char up;
 	char down;
 	char left;
 	char right;
 	char shoot;
+	int color;
 
 
 	Triangle();
-	Triangle(vec2 pos, vec2 scale, float angle,char upK,char downK,char leftK,char rightK,char shotK);
+	Triangle(vec2 pos, vec2 scale, float angle,char upK,char downK,char leftK,char rightK,char shotK, int c);
 	void drawTriangle(float ax, float ay, float bx, float by, float cx, float cy);
 	void draw() override;
 	void update() override;

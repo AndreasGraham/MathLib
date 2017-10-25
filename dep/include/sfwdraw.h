@@ -39,6 +39,28 @@ NOTE: YOU MUST CALL initContext for any of the functions to work!
 #define KEY_DOWN	  264
 #define KEY_UP		  265
 
+#define 	GLFW_KEY_8   56
+#define 	GLFW_KEY_5   53
+#define 	GLFW_KEY_6   54
+#define 	GLFW_KEY_4   52
+
+#define 	GLFW_KEY_KP_0   320
+#define 	GLFW_KEY_KP_1   321
+#define 	GLFW_KEY_KP_2   322
+#define 	GLFW_KEY_KP_3   323
+#define 	GLFW_KEY_KP_4   324
+#define 	GLFW_KEY_KP_5   325
+#define 	GLFW_KEY_KP_6   326
+#define 	GLFW_KEY_KP_7   327
+#define 	GLFW_KEY_KP_8   328
+#define 	GLFW_KEY_KP_9   329
+
+#define 	GLFW_KEY_PAGE_DOWN   267
+#define 	GLFW_KEY_INSERT   260
+#define 	GLFW_KEY_DELETE   261
+#define 	GLFW_KEY_END   269
+#define 	GLFW_KEY_HOME   268
+
 #define MOUSE_BUTTON_LEFT	0
 #define MOUSE_BUTTON_RIGHT	1
 

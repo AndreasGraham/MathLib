@@ -25,6 +25,24 @@ bool checkCollision(Triangle &tri, Bullet &bul)
 	return false;
 }
 
+bool healCollision(Circle &cir, Bullet &bul) {
+	float aXmin = cir.myT.position.x - 10.0f;
+	float aXmax = cir.myT.position.x + 10.0f;
+	float aYmin = cir.myT.position.y - 10.0f;
+	float aYmax = cir.myT.position.y;
+
+	float bXmin = bul.pos.x - 2.0f;
+	float bXmax = bul.pos.x + 2.0f;
+	float bYmin = bul.pos.y - 2.0f;
+	float bYmax = bul.pos.y + 2.0f;
+	if (aXmin < bXmax && aXmax > bXmax && aYmin < bYmax && aYmax > bYmin)
+	{
+		return true;
+	}
+
+	return false;
+}
+
 int main() {
 	sfw::initContext();
 	sfw::setCursorVisible(true);
@@ -35,10 +53,10 @@ int main() {
 	myTransform.angle = 45;
 
 	//make an int for a color switchboard
-	Triangle Nei(vec2{ 400,400 }, vec2{ 1,1 }, 0, 'W', 'S', 'A', 'D', 'Q');
-	Triangle Bei(vec2{ 500,400 }, vec2{ 1,1 }, 0, 'H', 'Y', 'G', 'J', 'T');
-	Circle Mercy(vec2{ 500, 500 }, vec2{ 1,1 }, 0);
-	Circle Ana(vec2{ 500, 500 }, vec2{ 1,1 }, 0);
+	Triangle Nei(vec2{ 400,400 }, vec2{ 1,1 }, 0, 'W', 'S', 'A', 'D', 'Q', 1);
+	Triangle Bei(vec2{ 500,400 }, vec2{ 1,1 }, 0, 'H', 'Y', 'G', 'J', 'T', 0);
+	Circle Mercy(vec2{ 500, 500 }, vec2{ 1,1 }, 0, 0, 'O', 'L', 'K', ';');
+	Circle Ana(vec2{ 400, 500 }, vec2{ 1,1 }, 0, 1, '0', '0', '0', '0');
 
 	Square Rein(vec2{ 400, 400 }, vec2{ 1,1 }, 0);
 	Transform myBaby;
@@ -56,8 +74,6 @@ int main() {
 		Bei.update();
 		Nei.draw();
 		Nei.update();
-		Rein.draw();
-		Rein.update();
 		Mercy.draw();
 		Mercy.update();
 		Ana.draw();
@@ -81,20 +97,32 @@ int main() {
 
 		}
 		
+		for (int i = 0; i < 25; i++) {
+			if (healCollision(Ana, Bei.magazine[i])) {
+				Ana.health -= 1;
+				std::cout << "ana rekt\n";
+			}
+
+			if (healCollision(Mercy, Nei.magazine[i])) {
+				Mercy.health -= 1;
+				std::cout << "mercy rekt\n";
+			}
+		}
+
 		if (Distance(Mercy.myT.position, Bei.myT.position) < 100) {
 			
-			if (sfw::getKey('E')) {
-
-				Bei.health += 1;
+			if (sfw::getKey('I')) {
+				sfw::drawLine(Mercy.myT.position.x, Mercy.myT.position.y, Bei.myT.position.x, Bei.myT.position.y, BLUE);
+				Bei.health += 0.2f;
 				std::cout << Bei.health;
 			}
 		}
 
 		if (Distance(Ana.myT.position, Nei.myT.position) < 100) {
 
-			if (sfw::getKey('E')) {
-
-				Nei.health += 1;
+			if (sfw::getKey('/')) {
+				sfw::drawLine(Ana.myT.position.x, Ana.myT.position.y, Nei.myT.position.x, Nei.myT.position.y, BLUE);
+				Nei.health += 0.2f;
 				std::cout << Nei.health;
 			}
 		}
