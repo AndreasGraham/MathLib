@@ -8,11 +8,19 @@ Triangle::Triangle()
 {
 }
 
-Triangle::Triangle(vec2 pos, vec2 scale, float angle)
+Triangle::Triangle(vec2 pos, vec2 scale, float angle, char upK, char downK, char leftK, char rightK, char shotK)
 {
 	myT.position = pos;
 	myT.dimension = scale;
 	myT.angle = angle;
+
+	up = upK;
+	down = downK;
+	left = leftK;
+	right = rightK;
+	shoot = shotK;
+
+
 	for (int i = 0; i < ammo; i++)
 	{
 		magazine[i].enabled = false;
@@ -34,7 +42,10 @@ void Triangle::draw()
 	//	/ \ position-Xvalue, position - Yvalue, position + Xvalue, position - Yvalue
 
 	//sfw::drawCircle(myT.position.x, myT.position.y, 20);
-	drawTriangle(myT.position.x, myT.position.y, (myT.position.x-25.0f),(myT.position.y-25.0f),(myT.position.x+25.0f), (myT.position.y-25.0f));
+
+	if (health > 0) {
+		drawTriangle(myT.position.x, myT.position.y, (myT.position.x - 25.0f), (myT.position.y - 25.0f), (myT.position.x + 25.0f), (myT.position.y - 25.0f));
+	}
 
 	for (int i = 0; i < ammo; i++)
 	{
@@ -48,21 +59,23 @@ void Triangle::draw()
 void Triangle::update()
 {
 	vec2 aim = { sfw::getMouseX(), sfw::getMouseY() };
+	vec2 dummy = aim - myT.position;
 	mat3 T = myT.getGlobalTransform();
 
-	vec2 movement = { 0,0 };
+	vec2 movement = normalize(T[1].xy);
 
-	int momentum = 1;
+	int momentum = 4;
 	float time = 0;
 
-	if (sfw::getMouseButton(0))
+	if (sfw::getKey(shoot))
 	{
 		for (int i = 0; i < ammo; i++)
 		{
 			if (magazine[i].enabled == false)
 			{
 				magazine[i].pos = myT.position;
-				magazine[i].Dir = normalize(aim); //normalize(T[1].xy);
+				//magazine[i].Dir = normalize(dummy); //normalize(aim); //normalize(T[1].xy);
+				magazine[i].Dir = movement;
 				magazine[i].speed = 30;
 				magazine[i].lifetime = 3;
 
@@ -72,20 +85,24 @@ void Triangle::update()
 		}
 	}
 
-	if (sfw::getKey('W')) {
-		movement.y += momentum;
+	if (sfw::getKey(up)) {
+		//movement.y += momentum;
+		myT.position += movement;
 	}
-	if (sfw::getKey('S')) {
-		movement.y -= momentum;
+	if (sfw::getKey(down)) {
+		//movement.y -= momentum;
+		myT.position -= movement;
 	}
-	if (sfw::getKey('A')) {
+	if (sfw::getKey(left)) {
+		myT.angle += 1;
 		movement.x -= momentum;
 	}
-	if (sfw::getKey('D')) {
-		movement.x += momentum;
+	if (sfw::getKey(right)) {
+		myT.angle -= 1;
+		//movement.x += momentum;
 	}
 
-	myT.position += movement;
+	
 
 
 	for (int i = 0; i < ammo; i++)

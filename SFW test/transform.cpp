@@ -27,19 +27,19 @@ void DrawMatrix(const mat3 &t, float drawing_scale) {
 	vec2 pos = t[2].xy;
 
 	//angle related
-	std::cout << t[1].xy.v << std::endl;
-	std::cout << t[1].xy.x << std::endl;
-	std::cout << t[1].xy.y << std::endl;
+	//std::cout << t[1].xy.v << std::endl;
+	//std::cout << t[1].xy.x << std::endl;
+	//std::cout << t[1].xy.y << std::endl;
 
-	//angle related
-	std::cout << t[0].xy.v << std::endl;
-	std::cout << t[0].xy.x << std::endl;
-	std::cout << t[0].xy.y << std::endl;
+	////angle related
+	//std::cout << t[0].xy.v << std::endl;
+	//std::cout << t[0].xy.x << std::endl;
+	//std::cout << t[0].xy.y << std::endl;
 
-	//position
-	std::cout << t[2].xy.v << std::endl;
-	std::cout << t[2].xy.x << std::endl;
-	std::cout << t[2].xy.y << std::endl;
+	////position
+	//std::cout << t[2].xy.v << std::endl;
+	//std::cout << t[2].xy.x << std::endl;
+	//std::cout << t[2].xy.y << std::endl;
 
 	vec2 right_ep = (pos + t[0].xy) * drawing_scale;
 	vec2 up_ep = pos + t[1].xy * drawing_scale;
