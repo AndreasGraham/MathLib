@@ -27,6 +27,12 @@
     <ClInclude Include="matrices.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DrawShapes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionShapes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mathutills.cpp">
@@ -39,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="matrices.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionShapes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

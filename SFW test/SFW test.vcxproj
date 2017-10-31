@@ -140,6 +140,7 @@
     <ClInclude Include="bullet.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Shapes.h" />
     <ClInclude Include="Square.h" />
     <ClInclude Include="transform.h" />

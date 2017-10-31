@@ -111,14 +111,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DrawShapes.h" />
     <ClInclude Include="mathutills.h" />
     <ClInclude Include="matrices.h" />
+    <ClInclude Include="CollisionShapes.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="vec3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mathutills.cpp" />
     <ClCompile Include="matrices.cpp" />
+    <ClCompile Include="CollisionShapes.cpp" />
     <ClCompile Include="vec2.cpp" />
     <ClCompile Include="vec3.cpp" />
   </ItemGroup>

@@ -2,6 +2,16 @@
 #include <cmath>
 #include <cfloat>
 
+vec2 operator-(const vec2 & v)
+{
+	v * -1;
+}
+
+vec2 operator/(const vec2 & lhs, float rhs)
+{
+	lhs * (1 / rhs);
+}
+
 vec2 operator+(const vec2 &lhs, const vec2 &rhs) {
 	vec2 result;
 	result.x = lhs.x + rhs.x;

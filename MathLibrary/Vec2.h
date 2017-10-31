@@ -17,6 +17,9 @@ union vec2 {
 	//need need a function for get x or get y, we can just access that data and fuck with it
 };
 
+vec2 operator-(const vec2 &v);
+vec2 operator/(const vec2 &lhs, float rhs);
+
 vec2 operator+(const vec2 &lhs,const vec2 &rhs);
 vec2 &operator+=(vec2 &lhs, const vec2 &rhs);
 bool operator==(const vec2 &lhs, const vec2 &rhs);
