@@ -22,7 +22,7 @@ public:
 		angularVelocity{0},
 		angularAcceleration{ 0 },
 		torqu{ 0 }, // replaces force
-		angulardrag{ .25f } // all the angular stuff works the same way as linear motion it just replaces a few things
+		angulardrag{ 0 } // all the angular stuff works the same way as linear motion it just replaces a few things
 		          
 	{
 
@@ -34,9 +34,10 @@ public:
 		impulse = {0,0};
 		t.position += velocity * dt; //dt is delta time, added for consistent rate of movement. iv velocity is 1, you will move 1 unity per second
 		force = -velocity * drag; //dampening force, moving against current direction (air resistance possibly)
+		
 		angularAcceleration = torqu / mass;
-		angularVelocity = angularAcceleration * dt;
-		t.angle = angularVelocity * dt;
+		angularVelocity += angularAcceleration * dt;
+		t.angle += angularVelocity * dt;
 		torqu = angularVelocity * angulardrag;
 	}
 };

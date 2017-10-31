@@ -22,9 +22,11 @@ mat3 operator*(const mat3 &a, const mat3 &b) {
 	return result;
 }
 
-vec3 operator*(const mat3 &a, const vec3 &v) {
+vec3 operator*(const mat3 &at, const vec3 &v) {
 	// 3x3 * 3x1 to apply transformation
 	vec3 result;
+
+	mat3 a = transpose(at);
 
 	result.x = (a.c[0].x*v.x) + (a.c[0].y*v.y) + (a.c[0].z*v.z);
 	result.y = (a.c[1].x*v.x) + (a.c[1].y*v.y) + (a.c[1].z*v.z);

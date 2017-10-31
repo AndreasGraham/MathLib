@@ -10,7 +10,7 @@ Transform::Transform() {
 }
 
 mat3 Transform::getLocalTransofrm() const {
-	return translate(position) * scale(dimension) * rotate(angle) ;
+	return translate(position) * rotate(angle) * scale(dimension) ;
 }
 
 
