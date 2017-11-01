@@ -18,7 +18,7 @@ public:
 
 	void draw(const Transform &t, const mat3 &cam = mat3::identity()) {
 		mat3 M = cam *t.getGlobalTransform() * translate(offset) * scale(dim);
-		
+	//	M = scale({ 400,300 }) * scale({ 20,20 });
 		sfw::drawTextureMatrix(handle, 0, WHITE, M.m);
 	}
 };
