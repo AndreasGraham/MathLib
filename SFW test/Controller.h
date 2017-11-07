@@ -8,11 +8,14 @@
 class Controller {
 
 public:
-	void poll(RigidBody, &rb, const Transform &t) {
-		if (sfw::getKey('W'))rigidbody.force += transform.getGlobalTransform()[1].xy * 2;
-		if (sfw::getKey('A'))rigidbody.torqu += 360;
-		if (sfw::getKey('D'))rigidbody.torqu += -360;
-		if (sfw::getKey('Q'))rigidbody.impulse += -transform.getGlobalTransform()[1].xy * 10;
+	void poll(RigidBody &rb, const Transform &t) {
+		if (sfw::getKey('W'))
+		{
+			rb.force += t.getGlobalTransform()[1].xy * 2;
+		}
+			if (sfw::getKey('A'))rb.torqu += 360;
+		if (sfw::getKey('D'))rb.torqu += -360;
+		if (sfw::getKey('Q'))rb.impulse += -t.getGlobalTransform()[1].xy * 10;
 
 	}
 

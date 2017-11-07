@@ -12,8 +12,8 @@ public:
 	RigidBody rigidbody;
 	Collider collider;
 	Controller controller;
-	Sprite sprite;
-
+	Spri te sprite;
+	Player();
 	vec2 pos;
 
 	void update();

@@ -2,6 +2,11 @@
 #include "sfwdraw.h"
 #include <iostream>
 
+Player::Player()
+{
+	sprite.dim = { 10,10 };
+}
+
 void Player::update() {
 	vec2 movement = {0,0};
 

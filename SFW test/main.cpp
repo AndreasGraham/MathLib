@@ -52,6 +52,12 @@ int main() {
 	sfw::initContext();
 	sfw::setCursorVisible(true);
 
+	/*Player sickBoy;
+	sickBoy.transform.position = vec2{ 100,100 };
+	sickBoy.sprite.handle = sfw::loadTextureMap("res/sprite.jpg");*/
+
+
+
 	Transform myTransform;
 	myTransform.position = vec2{ 200,400 };
 	myTransform.dimension = vec2{ 2,2 };
@@ -86,7 +92,7 @@ int main() {
 		//Collision result = intersect_AABB(transform.getGlobalTransform() * aabb, box2);
 		Collision result = intersect_circle(transform.getGlobalTransform() * circ, circ2);
 		//change color based on penetration
-
+		controller.poll(rigidbody, transform);
 		unsigned color = result.penetrationDepth < 0 ? WHITE : RED;
 		//if we overlap, then apply the "minimum translation vector" to the transform
 		if (result.penetrationDepth >= 0) {
@@ -97,6 +103,12 @@ int main() {
 		//	drawAABB(box2, color);
 		//drawAABB(transform.getGlobalTransform() * aabb, MAGENTA);
 
+
+	//	sickBoy.controller.poll(sickBoy.rigidbody,sickBoy.transform);
+	//	sickBoy.rigidbody.integrate(sickBoy.transform, sfw::getDeltaTime());
+		//sickBoy.sprite.draw(sickBoy.transform);
+
+		//sfw::drawCircle(sickBoy.transform.position.x, sickBoy.transform.position.y,6,12, MAGENTA);
 		drawCircle(circ2);
 		
 		//// 
