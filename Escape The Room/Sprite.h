@@ -18,6 +18,8 @@ public:
 	float startTimer;
 	int animations[12];
 	int animationsIndexCap;
+
+	
 	Sprite();
 	Sprite(int a_handle, float width, float height) : handle(a_handle),
 												dim{ width, height },
@@ -31,7 +33,7 @@ public:
 	}
 
 	void draw(const Transform &t,float dt, const mat3 &cam = mat3::identity()) {
-		UpdateAnim(dt);
+		//UpdateAnim(dt);
 		mat3 L = cam;
 		mat3 C = L * t.getGlobalTransform();
 		mat3 G = C * scale(dim);
@@ -59,7 +61,8 @@ public:
 	}
 	void animeCycle(int a[], const Transform &t, int arsize, float dt, int &i, const mat3 &cam = mat3::identity()) {		
 		animTimer -= dt;
-		if (animTimer < 0)
+		
+		if (animTimer <= 0)
 		{
 			i++;
 			animTimer = startTimer;
@@ -67,10 +70,12 @@ public:
 		if (i == arsize) {
 			i = 0;
 		}
+		std::cout << a[i] << std::endl;
 		mat3 M = cam *t.getGlobalTransform() * translate(offset) * scale(dim);
 		sfw::drawTextureMatrix3(handle, a[i], WHITE, M.m);
-		std::cout << a[i] << std::endl;
+		//std::cout << a[i] << std::endl;
 		
 	}
+	
 		
 };
