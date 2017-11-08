@@ -13,9 +13,9 @@ public:
 	Collider collider;
 	Controller controller;
 	Sprite sprite;
-	Player();
+	//Player();
 	vec2 pos;
 
-	void update();
-	void draw();
+	/*void update();
+	void draw();*/
 };

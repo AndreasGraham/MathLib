@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SFW test", "SFW test\SFW te
 		{5BE48C3C-5ACA-4C52-B9B4-02FFBA8C6046} = {5BE48C3C-5ACA-4C52-B9B4-02FFBA8C6046}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Escape The Room", "Escape The Room\Escape The Room.vcxproj", "{CA99372C-2BCE-4CEB-9932-309B218DF3EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -47,6 +49,14 @@ Global
 		{304AA08C-3ADB-4025-BC86-914DC9C592DF}.Release|x64.Build.0 = Release|x64
 		{304AA08C-3ADB-4025-BC86-914DC9C592DF}.Release|x86.ActiveCfg = Release|Win32
 		{304AA08C-3ADB-4025-BC86-914DC9C592DF}.Release|x86.Build.0 = Release|Win32
+		{CA99372C-2BCE-4CEB-9932-309B218DF3EA}.Debug|x64.ActiveCfg = Debug|x64
+		{CA99372C-2BCE-4CEB-9932-309B218DF3EA}.Debug|x64.Build.0 = Debug|x64
+		{CA99372C-2BCE-4CEB-9932-309B218DF3EA}.Debug|x86.ActiveCfg = Debug|Win32
+		{CA99372C-2BCE-4CEB-9932-309B218DF3EA}.Debug|x86.Build.0 = Debug|Win32
+		{CA99372C-2BCE-4CEB-9932-309B218DF3EA}.Release|x64.ActiveCfg = Release|x64
+		{CA99372C-2BCE-4CEB-9932-309B218DF3EA}.Release|x64.Build.0 = Release|x64
+		{CA99372C-2BCE-4CEB-9932-309B218DF3EA}.Release|x86.ActiveCfg = Release|Win32
+		{CA99372C-2BCE-4CEB-9932-309B218DF3EA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
