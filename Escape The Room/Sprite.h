@@ -70,7 +70,7 @@ public:
 		if (i == arsize) {
 			i = 0;
 		}
-		std::cout << a[i] << std::endl;
+		//std::cout << a[i] << std::endl;
 		mat3 M = cam *t.getGlobalTransform() * translate(offset) * scale(dim);
 		sfw::drawTextureMatrix3(handle, a[i], WHITE, M.m);
 		//std::cout << a[i] << std::endl;

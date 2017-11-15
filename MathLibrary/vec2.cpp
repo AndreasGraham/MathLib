@@ -213,4 +213,11 @@ vec2 max(vec2 a, vec2 b) {
 	return result;
 }
 
+vec2 project(const vec2 & v, const vec2 & axis) {
+	
+	return Dot(v, axis) * axis;
+}
 
+vec2 reflect(const vec2 & v, const vec2 & axis) {
+	return 2 * project(v, axis) - v;
+}

@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "sfwdraw.h"
 #include <iostream>
+#include "Collision.h"
 
 //Player::Player()
 //{
@@ -45,3 +46,58 @@
 // what do i need, on a key press, increase the movement per call in the direction
 // next, while key is pressed, track time, if that time is greater than 3, set momentum back to 1
 
+
+//static collision
+void static_resolution(vec2 & pos, vec2 & vel, const Collision & result, float elasticity) {
+	// for position, we need to correct:
+	pos += result.axis * result.handedness * result.penetrationDepth;
+
+	// for velocity, we need to reflect:
+	vel = -reflect(vel, result.axis*result.handedness) * elasticity;
+}
+
+void dynamic_resolution(vec2 & Apos, vec2 & Avel, float Amass, vec2 & Bpos, vec2 & Bvel, float Bmass, const Collision & result, float elasticity) {
+	// law of conservation 
+	/*
+	mass * vel = momentum
+
+	AP + BP = 'Ap + 'BP // Conservation of Momentum
+	Avel*Amass + Bvel*Bmass = fAvel*Amass + fBvel*Bmass
+	Avel - Bvel = -(Fbvel -fAvel)	
+	*/
+
+	vec2 normal = result.axis * result.handedness;
+
+	vec2 Rvel = Avel - Bvel;
+
+	float j = -(1 + elasticity)*Dot(Rvel, normal) / Dot(normal, normal *(1 / Amass + 1 / Bmass));
+
+	Avel += (j / Amass) * normal;
+	Bvel -= (j / Bmass) * normal;
+
+	Apos += normal * result.penetrationDepth * Amass / (Amass + Bmass);
+	Bpos += normal * result.penetrationDepth * Bmass / (Amass + Bmass);
+}
+
+void doCollision(moveableBlock & block, Player & player)
+{
+	//result basically just checks if thew two objects are colliding by recording a penetration depth, a handedness (-1, or 1 depending on which is deeper)
+	// and a vec 2. it checks each in a 1 dimensional manner (is there an x dimensional collision, or y dimensional collision?)
+	Collision result = collides(block.transform, block.collider, player.transform, player.collider);
+	// hit = result
+	if (result.penetrationDepth > 0)
+	{
+		//Static collision against a non moving agent
+		static_resolution(block.transform.position, block.rigidbody.velocity, result, 1.0f);
+		
+		//				OR
+		//Dynamic collision against a moving agents
+
+
+		//This is like a trigger collision
+		std::cout << "In Collision" << std::endl;
+		/*vec2 dir = normalize(block.transform.position - player.transform.position);
+		block.rigidbody.force += dir * 500;*/
+	}
+
+}

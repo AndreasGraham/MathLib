@@ -39,3 +39,8 @@ Collision intersect_circle(const circle & A, const circle & B) {
 
 	return ret;
 }
+
+
+//static resoltuon
+
+//Dynamic Resolution

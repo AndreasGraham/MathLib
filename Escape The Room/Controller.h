@@ -10,9 +10,11 @@ class Controller {
 
 public:
 	
-	void poll(RigidBody &rb, Transform &t, int up[], int down[], int left[], int right[], Sprite sprite, int i) {
+	void poll(RigidBody &rb, Transform &t, int up[], int down[], int left[], int right[],int idle[], Sprite sprite, int i) {
 		
-		if(sfw::getKey())
+		if (sfw::getKey('O') == false && sfw::getKey('W') == false && sfw::getKey('A') == false && sfw::getKey('S') == false && sfw::getKey('D') == false) {
+			sprite.animeCycle(idle, t, 1, sfw::getDeltaTime(), i);
+		}
 		if (sfw::getKey('W'))
 		{
 			sprite.animeCycle(up, t, 2, sfw::getDeltaTime(), i);

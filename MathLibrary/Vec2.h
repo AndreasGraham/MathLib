@@ -42,3 +42,5 @@ vec2 Perpendicular(vec2 a);
 vec2 Lerp(vec2 a, vec2 b, float c);
 vec2 min(vec2 a, vec2 b);
 vec2 max(vec2 a, vec2 b);
+vec2 reflect(const vec2 &v, const vec2 &axis);
+vec2 project(const vec2 &v, const vec2 &axis);

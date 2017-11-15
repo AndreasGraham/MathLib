@@ -19,3 +19,23 @@ public:
 	/*void update();
 	void draw();*/
 };
+
+class moveableBlock
+{
+public:
+	Transform transform;
+	RigidBody rigidbody;
+	Collider collider;
+	Sprite sprite;
+};
+
+class wall {
+public:
+	Transform transform;
+	RigidBody rigidbody;
+	Collider collider;
+	Sprite sprite;
+};
+
+void wallCollision(wall &wall, Player &player);
+void doCollision(moveableBlock &block, Player &player);
