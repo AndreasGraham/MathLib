@@ -40,6 +40,20 @@ int main() {
 	bluePresent.sprite.dim = { 30,30 };
 	bluePresent.transform.position = { 450, 450 };
 
+	int green_handle = sfw::loadTextureMap("res/green.png");
+	moveableBlock greenPresent;
+	greenPresent.sprite.handle = green_handle;
+	greenPresent.sprite.dim = { 30,30 };
+	greenPresent.transform.position = { 400, 400 };
+
+	int santa_handle = sfw::loadTextureMap("res/santa.jpg");
+	moveableBlock santa;
+	santa.sprite.handle = santa_handle;
+	santa.sprite.dim = { 100, 100 };
+	santa.transform.position = { 600, 200 };
+
+
+
 	wall wall0;
 	int wall_handle = sfw::loadTextureMap("res/xmass.png");
 	wall0.transform.position = {0,200 };
@@ -99,6 +113,8 @@ int main() {
 	wall4.collider.box.extents = { 75, 75 };
 	presents.collider.box.extents = { 30, 30 };
 	bluePresent.collider.box.extents = { 15,15 };
+	greenPresent.collider.box.extents = { 15,15 };
+	santa.collider.box.extents = { 50,50 };
 	block.rigidbody.drag = 5;
 
 
@@ -124,6 +140,9 @@ int main() {
 		sfw::drawTextureMatrix3(wall4.sprite.handle, 0, WHITE, (mat3::identity() * wall4.transform.getGlobalTransform() * translate(wall4.sprite.offset) * scale(wall4.sprite.dim)).m);
 		sfw::drawTextureMatrix3(presents.sprite.handle, 0, WHITE, (mat3::identity() * presents.transform.getGlobalTransform() * translate(presents.sprite.offset) * scale(presents.sprite.dim)).m);
 		sfw::drawTextureMatrix3(bluePresent.sprite.handle, 0, WHITE, (mat3::identity() * bluePresent.transform.getGlobalTransform() * translate(bluePresent.sprite.offset) * scale(bluePresent.sprite.dim)).m);
+		sfw::drawTextureMatrix3(greenPresent.sprite.handle, 0, WHITE, (mat3::identity() * greenPresent.transform.getGlobalTransform() * translate(greenPresent.sprite.offset) * scale(greenPresent.sprite.dim)).m);
+		sfw::drawTextureMatrix3(santa.sprite.handle, 0, WHITE, (mat3::identity() * santa.transform.getGlobalTransform() * translate(santa.sprite.offset) * scale(santa.sprite.dim)).m);
+
 
 		//sfw::drawTextureMatrix3(block_handle, bk[0], WHITE, m.m)
 		DrawMatrix(link.transform.getGlobalTransform(),40);
@@ -136,6 +155,8 @@ int main() {
 		drawAABB(wall4.collider.getGlobalBox(wall4.transform), MAGENTA);
 		drawAABB(presents.collider.getGlobalBox(presents.transform), MAGENTA);
 		drawAABB(bluePresent.collider.getGlobalBox(bluePresent.transform), MAGENTA);
+		drawAABB(greenPresent.collider.getGlobalBox(greenPresent.transform), MAGENTA);
+		drawAABB(santa.collider.getGlobalBox(santa.transform), MAGENTA);
 
 		//DrawMatrix(block.transform.getGlobalTransform(), 40);
 		//link.rigidbody.force = { 5,5 };
@@ -166,6 +187,20 @@ int main() {
 		block_wallCollision(wall3, bluePresent);
 		block_wallCollision(wall4, bluePresent);
 		doCollision(bluePresent, link);
+
+		block_wallCollision(wall0, greenPresent);
+		block_wallCollision(wall1, greenPresent);
+		block_wallCollision(wall2, greenPresent);
+		block_wallCollision(wall3, greenPresent);
+		block_wallCollision(wall4, greenPresent);
+		doCollision(greenPresent, link);
+
+		block_wallCollision(wall0, santa);
+		block_wallCollision(wall1, santa);
+		block_wallCollision(wall2, santa);
+		block_wallCollision(wall3, santa);
+		block_wallCollision(wall4, santa);
+		doCollision(santa, link);
 	}
 
 	sfw::termContext();
