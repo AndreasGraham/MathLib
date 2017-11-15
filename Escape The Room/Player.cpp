@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Collision.h"
 
+
 //Player::Player()
 //{
 //	sprite.dim = { 10,10 };
@@ -101,3 +102,32 @@ void doCollision(moveableBlock & block, Player & player)
 	}
 
 }
+
+
+void wallCollision(const wall & w, Player & p) {
+	Collision result = collides(w.transform, w.collider, p.transform, p.collider);
+	result.handedness *= -1;
+	if (result.penetrationDepth > 0)
+	{
+		static_resolution(p.transform.position,	p.rigidbody.velocity, result,0);
+	}
+}
+
+void block_wallCollision(const wall & w, moveableBlock & b) {
+	Collision result = collides(w.transform, w.collider, b.transform, b.collider);
+	result.handedness *= -1;
+	if (result.penetrationDepth > 0)
+	{
+		static_resolution(b.transform.position, b.rigidbody.velocity, result, 0);
+	}
+}
+
+void block_blockCollision(moveableBlock & a, moveableBlock & b) {
+	Collision result = collides(a.transform, a.collider, b.transform, b.collider);
+	result.handedness *= -1;
+	if (result.penetrationDepth > 0)
+	{
+		static_resolution(b.transform.position, b.rigidbody.velocity, result, 0);
+	}
+}
+

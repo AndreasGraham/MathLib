@@ -20,6 +20,7 @@ public:
 			sprite.animeCycle(up, t, 2, sfw::getDeltaTime(), i);
 			//rb.force += t.getGlobalTransform()[1].xy * 10;
 			t.position.y += 2;
+			//rb.force += { 0,15 };
 		}
 		if (sfw::getKey('A')) {
 			sprite.animeCycle(left, t, 2, sfw::getDeltaTime(), i);
